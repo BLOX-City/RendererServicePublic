@@ -206,6 +206,7 @@ public static class Program {
             {
                 response.StatusCode = 400;
                 await response.WriteAsync("{\"meta\":{\"status\":false,\"messages\":[\"E_PARAM_PANTS_TEXTURE_NULL\"],\"detailed\":[\"pants texture uri cannot be null expected format file:// or https:// over the network\"]}}");
+                response.Headers!.ContentType = "application/json";
                 return;
             }            
 
@@ -216,6 +217,7 @@ public static class Program {
             {
                 response.StatusCode = 400;
                 await response.WriteAsync("{\"meta\":{\"status\":false,\"messages\":[\"E_PARAM_SHIRT_TEXTURE_INVALID_FORMAT\"],\"detailed\":[\"shirt texture uri was invalid its either a file:// http://\"]}}");
+                response.Headers!.ContentType = "application/json";
                 return;
             }
 
@@ -223,6 +225,7 @@ public static class Program {
             {
                 response.StatusCode = 400;
                 await response.WriteAsync("{\"meta\":{\"status\":false,\"messages\":[\"E_PARAM_PANTS_TEXTURE_INVALID_FORMAT\"],\"detailed\":[\"pants texture uri was invalid its either a file:// http://\"]}}");
+                response.Headers!.ContentType = "application/json";
                 return;
             }
 
@@ -405,7 +408,7 @@ public static class Program {
 
             Renderer.Rendered.Remove(id, out _);
         });
-        webApplication.RunAsync("http://127.0.0.1:1444");
+        webApplication.RunAsync("http://0.0.0.0:1444");
         GameWin game = new GameWin(400, 600, "test");
         game.Run();
     }

@@ -17,7 +17,7 @@ The avatar renderer... one of the most cruical parts of a sandbox game
 ## Notes
 
 Lighting isn't very good, you should bake GI to vertex colors using Blender otherwise it'll look like something from 2008
-but you can avoid doing that if you are for the retro looks
+but you can avoid doing that if you are here for the retro looks
 
 ## Setup
 
