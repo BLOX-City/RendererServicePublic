@@ -1,0 +1,4 @@
+bin/*
+obj/*
+assets/mesh/character_parts/production/*
+assets/mesh/character_parts/beta/*
