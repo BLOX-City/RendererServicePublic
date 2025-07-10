@@ -71,6 +71,12 @@ Port of ancient Avatar Renderer from 2020 written in C++ to C#
 
 There are a lot of things you can add like API Keys, Replace Skia dependency with something that is lighter, optimize the rendering further, refactor the rendering logic
 
+## About BLOXCity
+
+BLOXCity is currently in development platform exploring the niche of Social Media + Gaming
+
+Visit our Discord Server to learn more: [Discord](https://discord.gg/8apPrvm9mB)
+
 ## License
 
 GNU Lesser General Public License except for art assets
