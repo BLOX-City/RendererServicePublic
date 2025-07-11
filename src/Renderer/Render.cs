@@ -257,7 +257,7 @@ public static class Renderer
             // could have been used bit flags but too sleepy
 
             GL.Uniform3(GL.GetUniformLocation(testShader.ShaderProgramId, "objPos"), mesh.Position);
-            GL.Uniform1(GL.GetUniformLocation(testShader.ShaderProgramId, "hasNoLighting"), mesh.HasNoLighting == true ? 1 : 0);
+            GL.Uniform1(GL.GetUniformLocation(testShader.ShaderProgramId, "hasNoLighting"), mesh.HasNoLighting == true ? 1 : 1);
             GL.Uniform1(GL.GetUniformLocation(testShader.ShaderProgramId, "color"), (int)mesh.Color);
             GL.Uniform1(GL.GetUniformLocation(testShader.ShaderProgramId, "isTextureEnabled"), isTextureEnabled);
             GL.Uniform1(GL.GetUniformLocation(testShader.ShaderProgramId, "isVertexColorEnabled"), mesh.colors.Count != 0 ? 1 : 0);

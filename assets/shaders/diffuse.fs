@@ -78,7 +78,7 @@ void main()
     float((unsignedColor >> 24u) & 0xFFu) / 255.0);
 
     if (isVertexColorEnabled == 1) {
-        objectColor = vec4(vertColor, 1.0);
+        objectColor *= vec4(vertColor, 1.0);
     }
 
     // originally * fragmentColor
