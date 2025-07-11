@@ -19,50 +19,9 @@ public class GameWin : GameWindow {
 
     }
 
-    float x = 0;
-    float y = 0;
-    float prevX = 0;
-    float prevY = 0;
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
         base.OnUpdateFrame(args);
-        /*Renderer.World.ActiveCamera.Rotation = new Vector3(379.79922f, 370.79922f, 0);
-        Renderer.World.ActiveCamera.Position = new Vector3(0.8740163f, -3.7181618f, -3.7042923f);*/
-        /*
-        x = MousePosition.X;
-        y = MousePosition.Y;
-        
-        Renderer.World.ActiveCamera.Rotation = new Vector3(Renderer.World.ActiveCamera.Pitch, Renderer.World.ActiveCamera.Yaw, Renderer.World.ActiveCamera.Roll);
-
-        float deltaYaw = x - prevX;
-        float deltaPitch = prevY - y;
-        float mouseSensitivity = 0.9f;
-        Renderer.World.ActiveCamera.Yaw += deltaYaw * mouseSensitivity;
-        Renderer.World.ActiveCamera.Pitch -= deltaPitch * mouseSensitivity;
-        if(KeyboardState.IsKeyDown(OpenTK.Windowing.GraphicsLibraryFramework.Keys.W)) {
-            Renderer.World.ActiveCamera.Move(new Vector3(-0.025f, 0.025f, 0.025f));
-        }
-        if(KeyboardState.IsKeyDown(OpenTK.Windowing.GraphicsLibraryFramework.Keys.S)) {
-            Renderer.World.ActiveCamera.Move(new Vector3(0.025f, 0.025f, -0.025f));
-        }        
-        if(KeyboardState.IsKeyDown(OpenTK.Windowing.GraphicsLibraryFramework.Keys.A)) {
-            Renderer.World.ActiveCamera.Move(new Vector3(-0.25f, 0.25f, -0.25f));
-        }
-        if (KeyboardState.IsKeyDown(OpenTK.Windowing.GraphicsLibraryFramework.Keys.G))
-        {
-            Console.WriteLine($"Location Captured Yaw: {Renderer.World.ActiveCamera.Yaw} Pitch: {Renderer.World.ActiveCamera.Pitch} Position X: {Renderer.World.ActiveCamera.Position.X} Positiion Y: {Renderer.World.ActiveCamera.Position.Y} Position Z: {Renderer.World.ActiveCamera.Position.Z}");
-        }    
-        if (KeyboardState.IsKeyDown(OpenTK.Windowing.GraphicsLibraryFramework.Keys.Escape))
-        {
-            Close();
-        }
-
-        prevX = MousePosition.X;
-        prevY = MousePosition.Y;
-        // MousePosition = new Vector2(ClientLocation.X - ClientSize.X, ClientLocation.Y);
-        */
-
-
     }
 
 
