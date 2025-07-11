@@ -1,9 +1,14 @@
 # BLOXCity Renderer
-A gift from BLOXCity to the entire sandbox community
+A "gift" from BLOXCity to the entire sandbox community
 
-Something that many websites need but don't have due to complex requirements
+Something that many new Sandbox websites need but don't have;
+often they release with no avatar renderer or they skid a badly made one that is very slow
 
-The avatar renderer... one of the most cruical parts of a sandbox game
+For whose don't know:
+
+Sandbox website is colloquial term referring to a type of website that aims to be a mix of social media and games, it's a niche form of entertainment that the only major player in this field is Roblox 
+
+but there's nothing preventing you from using this for any project that requires 3D avatars rendered server side
 
 ## Features
 
@@ -18,6 +23,8 @@ The avatar renderer... one of the most cruical parts of a sandbox game
 
 Lighting isn't very good, you should bake GI to vertex colors using Blender otherwise it'll look like something from 2008
 but you can avoid doing that if you are here for the retro looks
+
+We recommend disabling the lighting for the demo since lighting is pre baked for performance
 
 ## Setup
 
