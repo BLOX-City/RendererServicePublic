@@ -312,8 +312,8 @@ public static class Program {
             var _2 = lqipBitmap.GetPixel(1, 0);
             var _3 = lqipBitmap.GetPixel(2, 0);
             var _4 = lqipBitmap.GetPixel(0, 1);
-            var _5 = lqipBitmap.GetPixel(0, 2);
-            var _6 = lqipBitmap.GetPixel(0, 6);
+            var _5 = lqipBitmap.GetPixel(1, 1);
+            var _6 = lqipBitmap.GetPixel(2, 1);
 
             var averageColorR = _1.Red + _2.Red + _3.Red + _4.Red + _5.Red + _6.Red / 6;
             var averageColorG = _1.Green + _2.Green + _3.Green + _4.Green + _5.Green + _6.Green / 6;
