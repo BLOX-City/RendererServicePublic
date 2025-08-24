@@ -6,6 +6,7 @@ using Microsoft.Extensions.Primitives;
 using SkiaSharp;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using ThumbHashes;
 namespace BLOXCityRenderer;
 
 public class GameWin : GameWindow {
@@ -306,61 +307,11 @@ public static class Program {
             canvas.DrawBitmap(bitmap, 0, 0);
 
             var lqipBitmap = rotated.Copy();
-            lqipBitmap = lqipBitmap.Resize(new SKImageInfo(3, 2), SKSamplingOptions.Default);
+            lqipBitmap = lqipBitmap.Resize(new SKImageInfo(3, 3), SKSamplingOptions.Default);
 
-            var _1 = lqipBitmap.GetPixel(0, 0);
-            var _2 = lqipBitmap.GetPixel(1, 0);
-            var _3 = lqipBitmap.GetPixel(2, 0);
-            var _4 = lqipBitmap.GetPixel(0, 1);
-            var _5 = lqipBitmap.GetPixel(1, 1);
-            var _6 = lqipBitmap.GetPixel(2, 1);
+            var thumbhash = ThumbHash.FromImage(3, 3, lqipBitmap.GetPixelSpan());
 
-            var averageColorR = _1.Red + _2.Red + _3.Red + _4.Red + _5.Red + _6.Red / 6;
-            var averageColorG = _1.Green + _2.Green + _3.Green + _4.Green + _5.Green + _6.Green / 6;
-            var averageColorB = _1.Blue + _2.Blue + _3.Blue + _4.Blue + _5.Blue + _6.Blue / 6;
-
-            (float L, float a, float b) = OklabConverter.RgbToOklab(averageColorR / 255.0f, averageColorG / 255.0f, averageColorB / 255.0f);
-
-
-            // oklabBits
-            var (ll, aaa, bbb) = OklabConverter.FindOklabBits(L, a, b);
-            var (baseL, baseA, baseB) = OklabConverter.BitsToLab(ll, aaa, bbb);
-
-            (float L, float a, float b)[] cells = new (float L, float a, float b)[6];
-
-            cells[0] = OklabConverter.RgbToOklab(_1.Red, _1.Green, _1.Blue);
-            cells[1] = OklabConverter.RgbToOklab(_2.Red, _2.Green, _2.Blue) ;
-            cells[2] = OklabConverter.RgbToOklab(_3.Red, _3.Green, _3.Blue); 
-            cells[3] = OklabConverter.RgbToOklab(_4.Red, _4.Green, _4.Blue); 
-            cells[4] = OklabConverter.RgbToOklab(_5.Red, _5.Green, _5.Blue); 
-            cells[5] = OklabConverter.RgbToOklab(_6.Red, _6.Green, _6.Blue);
-
-            float[] luminance = new float[6];
-
-            for (int i = 0; i < cells.Length; i++)
-            {
-                luminance[i] = MathF.Min(1, Math.Max(0, 0.5f + cells[i].L - baseL));
-            }
-
-              byte ca = (byte)Math.Round(luminance[0] * 0b11);
-              byte cb = (byte)Math.Round(luminance[1] * 0b11);
-              byte cc = (byte)Math.Round(luminance[2] * 0b11);
-              byte cd = (byte)Math.Round(luminance[3] * 0b11);
-              byte ce = (byte)Math.Round(luminance[4] * 0b11);
-              byte cf = (byte)Math.Round(luminance[5] * 0b11);
-              int lqip =
-                -(2 << 19) +
-                ((ca & 0b11) << 18) +
-                ((cb & 0b11) << 16) +
-                ((cc & 0b11) << 14) +
-                ((cd & 0b11) << 12) +
-                ((ce & 0b11) << 10) +
-                ((cf & 0b11) << 8) +
-                ((ll & 0b11) << 6) +
-                ((aaa & 0b111) << 3) +
-                (bbb & 0b111);
-
-            response.Headers!["X-BLOXCity-Lqip"] = lqip.ToString();
+            response.Headers!["X-BLOXCity-Lqip"] = Convert.ToBase64String(thumbhash.Hash.ToArray()).Replace("=", String.Empty).Replace('/', '`');
 
             response.Headers!.ContentType = "image/webp";
             await response.Body.WriteAsync(rotated.Encode(SKEncodedImageFormat.Webp, 75).ToArray());
